@@ -15,6 +15,12 @@ def lastpoint(request):
         lastSpecifiedHours = datetime.now(tz=timezone.utc) - timedelta(hours=hours)
         resultJson = []
         #Cached result for optimization
-        results= NavigationRecord.objects.filter(vehicle=vehicle, datetime__gte=lastSpecifiedHours).values()
-        print(list(results))
-    return JsonResponse(list(results), safe=False)
+        results= NavigationRecord.objects.filter(vehicle=vehicle, datetime__gte=lastSpecifiedHours)
+        for result in results:
+             print(result)
+             resultJson.append({"Plate": vehicle.plate, "Date Time": result.datetime, "Longitude": result.longitude, "Latitude": result.latitude})
+
+        #Second method results=list(...filter().values) with custom labelling and parsing
+     
+
+    return JsonResponse(resultJson, safe=False)
