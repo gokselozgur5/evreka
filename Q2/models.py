@@ -10,7 +10,7 @@ class Bin(models.Model):
     collection_frequency = models.IntegerField()
     last_collection = DateTimeField()
 #classes could be return one or more attributes. 
-    def __str__(self):
+    def __int__(self):
         return self.id
 
 
