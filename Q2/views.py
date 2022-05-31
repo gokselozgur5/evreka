@@ -3,7 +3,6 @@ from django.shortcuts import render
 from .models import Bin,Meta_Operation,Operation
 
 # Create your views here.
-#Should same operation and same bin can pair again or not? If it is okay..
 def getCollectionFrequency(request):
     if request.method == "POST":
         #Assumed operation will be input.

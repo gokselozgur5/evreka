@@ -2,7 +2,7 @@ from webbrowser import Opera
 from django.db import models
 from django.forms import DateTimeField
 
-# Create your models here.
+#If One bin can only be used for one operation
 class Bin(models.Model):
     #regexp if necessary
     latitude=models.FloatField()
@@ -24,4 +24,4 @@ class Operation(models.Model):
 
 class Meta_Operation(models.Model):
     operation = models.ForeignKey(Operation, on_delete=models.CASCADE)
-    bin = models.ForeignKey(Bin, on_delete=models.CASCADE)
+    bin = models.OneToOneField(Bin, on_delete=models.CASCADE, primary_key=True)
